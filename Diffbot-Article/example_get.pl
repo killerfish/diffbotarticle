@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN { push @INC, './lib' }
 
-use Diffbot::Article qw(:get);
+use Diffbot::Article qw(:get); #Using export tag 'get'
 use JSON::XS;
 use Data::Dumper::Concise;
 

@@ -5,13 +5,15 @@ use warnings;
 
 BEGIN { push @INC, './lib' }
 
-use Diffbot::Article qw(articlePost);
+use Diffbot::Article qw(articlePost);  			### Using export tag 'get'
 use JSON::XS;
 use Data::Dumper::Concise;
 
-#USER CODE                                 
-my $token = "f2e2d920eab44063aa742b2b0698ab49"; #Set your token here
-my $fedata = articlePost("http://blog.diffbot.com/diffbots-new-product-api-teaches-robots-to-shop-online",$token,['*'],"/tmp/data","text/html",2,"hello");
-print $fedata;
-my $json_dump = JSON::XS::decode_json($fedata);
-print Dumper $json_dump;
+my $token = "";						### Enter the diffbot token here
+my $url = "http://newswatch.nationalgeographic.com/2013/12/16/5-sky-events-this-week-moon-poses-with-winter-gems-and-little-bear-runs-with-meteors/";    ### Enter url
+my @fieldarray = ("meta","images");                                
+my $version = 2;					### Version number	
+my %topass = (token => $token, url => $url, fields => \@fieldarray, version => $version, srcfile => './data', content_type => 'text/html'); 
+my $data = articlePost(%topass); 			### Call our function and pass it the hash
+my $json_dump = JSON::XS::decode_json($data);		
+print Dumper $json_dump;		

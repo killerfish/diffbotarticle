@@ -1,4 +1,4 @@
 diffbotarticle
 ==============
 
-fetch article data from diffbot
+Unofficial Article api of Diffbot, in perl. Enter Diffbot-Article directory.

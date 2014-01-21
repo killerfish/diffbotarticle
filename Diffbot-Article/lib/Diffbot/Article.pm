@@ -75,9 +75,8 @@ sub articlePost
 }
 sub getResponseCode
 {
-		my $sock = shift;
-		my $response_code = <$sock>;
-                print $response_code;
+		my $socket = shift;
+		my $response_code = <$socket>;
 		if($response_code =~ m/^HTTP\/1.1\s+(\S+)\s+(.+)/)
                 {
                        if($1 != 200)
@@ -89,6 +88,7 @@ sub getResponseCode
 }
 sub getResponseData
 {
+		my $json;
 		my $chunked_mode = 1;
                 my $socket = shift;
 		while(<$socket> =~ m/^(\S+):\s+(.+)/)
@@ -99,7 +99,6 @@ sub getResponseData
                                $chunked_mode = 0;
                        }
                 }
-                my $json;
                 if($chunked_mode == 1)
                 {
                         my $temp = <$socket>;

@@ -1,4 +1,4 @@
 diffbotarticle
 ==============
 
-Unofficial Article api of Diffbot, in perl. Enter Diffbot-Article directory.
+Unofficial Diffbot Perl API (for article).
